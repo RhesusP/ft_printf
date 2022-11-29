@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbernot <cbernot@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/24 20:24:08 by cbernot           #+#    #+#             */
-/*   Updated: 2022/11/25 09:25:41 by cbernot          ###   ########.fr       */
+/*   Created: 2022/11/26 22:33:25 by cbernot           #+#    #+#             */
+/*   Updated: 2022/11/26 22:34:41 by cbernot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "./../includes/ft_printf.h"
 
-int	ft_printf(const char *str, ...)
+size_t	ft_strlen(const char *s)
 {
-	return (0);
+	size_t	len;
+
+	len = 0;
+	while (s[len] != '\0')
+		len++;
+	return (len);
 }
