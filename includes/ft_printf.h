@@ -6,7 +6,7 @@
 /*   By: cbernot <cbernot@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 20:17:30 by cbernot           #+#    #+#             */
-/*   Updated: 2022/11/28 20:20:48 by cbernot          ###   ########.fr       */
+/*   Updated: 2022/11/29 16:12:53 by cbernot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,15 @@
 # include <stdarg.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include "stdio.h"	//TODO remove
 
+int		ft_printf(const char *str, ...);
 
-int ft_printf(const char *, ...);
-
-int	ft_print_char(unsigned char c);
-int	ft_print_str(char *s);
-int	ft_print_int(int nb);
-int	ft_print_int_base(int nbr, char *base);
-
-
+int		ft_print_char(unsigned char c);
+int		ft_print_str(char *s);
+int		ft_print_int(int nb);
+int		ft_print_int_base(long nbr, char *base);
+int		ft_print_ptr(unsigned long long nbr);
+int		ft_print_uint(unsigned int nb);
 
 size_t	ft_strlen(const char *s);
 

@@ -6,14 +6,18 @@
 /*   By: cbernot <cbernot@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 19:58:10 by cbernot           #+#    #+#             */
-/*   Updated: 2022/11/28 09:09:10 by cbernot          ###   ########.fr       */
+/*   Updated: 2022/11/29 16:12:50 by cbernot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../includes/ft_printf.h"
 
+/**
+ * @brief Print a char and return -1 if an error occurs.
+ */
 int	ft_print_char(unsigned char c)
 {
-	write(1, &c, 1);
+	if (write(1, &c, 1) == -1)
+		return (-1);
 	return (1);
 }

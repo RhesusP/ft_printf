@@ -6,13 +6,13 @@
 #    By: cbernot <cbernot@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/26 22:13:51 by cbernot           #+#    #+#              #
-#    Updated: 2022/11/26 23:35:27 by cbernot          ###   ########.fr        #
+#    Updated: 2022/11/29 16:12:28 by cbernot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 SRCS = ./srcs/ft_printf.c ./srcs/ft_print_char.c ./srcs/ft_print_str.c ./srcs/ft_printf_utils.c \
-		./srcs/ft_print_int.c ./srcs/ft_print_int_hex.c
+		./srcs/ft_print_int.c ./srcs/ft_print_int_hex.c ./srcs/ft_print_ptr.c ./srcs/ft_print_uint.c
 OBJS = ${SRCS:.c=.o}
 INCLUDES = ./includes/ft_printf.h
 FLAGS = -Wall -Wextra -Werror
@@ -32,6 +32,3 @@ fclean: clean
 	rm -f ${NAME}
 
 re: fclean all
-
-test: 
-	gcc ${SRCS} ./main.c -I ${INCLUDES}

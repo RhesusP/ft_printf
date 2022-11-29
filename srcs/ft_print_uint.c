@@ -1,46 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_double.c                                  :+:      :+:    :+:   */
+/*   ft_print_uint.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbernot <cbernot@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/28 16:32:13 by cbernot           #+#    #+#             */
-/*   Updated: 2022/11/28 20:18:59 by cbernot          ###   ########.fr       */
+/*   Created: 2022/11/29 09:56:35 by cbernot           #+#    #+#             */
+/*   Updated: 2022/11/29 16:12:37 by cbernot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../includes/ft_printf.h"
 
-/*
-int	ft_print_double(double nb)
+/**
+ * @brief The same as `ft_print_int`... but for unsigned int.
+ */
+int	ft_print_uint(unsigned int nb)
 {
-	int len;
+	int	len;
+	int	temp;
 
 	len = 0;
-	if (nb == -2147483648)
-	{
-		nb = 147483648;
-		len += ft_print_char('-');
-		len += ft_print_char(2 + '0');
-	}
-	if (nb < 0)
-	{
-		len += ft_print_char('-');
-		len += ft_print_int(nb *= -1);
-		return (len);
-	}
 	if (nb >= 10)
 	{
-		len += ft_print_int(nb / 10);
-		len += ft_print_char((nb % 10) + '0');
-	}
-	if (nb > 0 && nb < 1)
-	{
-
+		temp = ft_print_int(nb / 10);
+		if (temp == -1)
+			return (-1);
+		len += temp;
+		if (ft_print_char((nb % 10) + '0') == -1)
+			return (-1);
+		len += 1;
 	}
 	else
-		len += ft_print_char(nb + '0');
+	{
+		if (ft_print_char(nb + '0') == -1)
+			return (-1);
+		len += 1;
+	}
 	return (len);
 }
-*/

@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_int_hex.c                                 :+:      :+:    :+:   */
+/*   ft_print_ptr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbernot <cbernot@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/26 23:28:22 by cbernot           #+#    #+#             */
-/*   Updated: 2022/11/29 16:12:48 by cbernot          ###   ########.fr       */
+/*   Created: 2022/11/29 09:07:09 by cbernot           #+#    #+#             */
+/*   Updated: 2022/11/29 16:07:15 by cbernot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../includes/ft_printf.h"
 
-static int	ft_display_nb(long nb, char *base, int base_size)
+static int	ft_display_nb(unsigned long long nb, char *base, int base_size)
 {
-	long	reste;
-	int		printed_len;
-	int		temp;
+	long long	reste;
+	int			printed_len;
+	int			temp;
 
 	printed_len = 0;
-	if (nb < 0)
-		nb = 4294967295 - (nb * -1) + 1;
 	reste = nb % base_size;
 	nb = nb / base_size;
 	if (nb > 0)
@@ -37,20 +35,29 @@ static int	ft_display_nb(long nb, char *base, int base_size)
 	return (printed_len);
 }
 
-/**
- * @brief Print an integer in a given base. Here, -1 is returned 
- * if an error occurs.
- */
-int	ft_print_int_base(long nbr, char *base)
+int	ft_print_ptr(unsigned long long nbr)
 {
-	int	base_size;
-	int	len;
+	char	*base;
+	int		base_size;
+	int		printed_len;
+	int		temp;
 
+	base = "0123456789abcdef";
+	if (nbr == 0)
+	{
+		if (write(1, "0x0", 3) == -1)
+			return (-1);
+		return (3);
+	}
 	base_size = 0;
 	while (base[base_size])
 		base_size++;
-	len = ft_display_nb(nbr, base, base_size);
-	if (len == -1)
+	printed_len = 0;
+	if (ft_print_str("0x") == -1)
 		return (-1);
-	return (len);
+	printed_len += 2;
+	temp = ft_display_nb(nbr, base, base_size);
+	if (temp == -1)
+		return (-1);
+	return (printed_len + temp);
 }
