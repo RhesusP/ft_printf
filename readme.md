@@ -1,7 +1,7 @@
 # ft_printf
 #### *Because ft_putnbr() and ft_putstr() aren’t enough*
 
-Second project for [42 school](). We have to recode a simpler `printf()` function which handles the `cspdiuxX%` conversions. 
+Second project for [42 school](https://42.fr/en/homepage/). We have to recode a simpler `printf()` function which handles the `cspdiuxX%` conversions. 
 
 ## Prototype
 
