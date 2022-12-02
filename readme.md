@@ -1,10 +1,10 @@
-<center>
+<div align="center>
 
 # ft_printf
 #### *Because ft_putnbr() and ft_putstr() aren’t enough*
 
 [![forthebadge](https://forthebadge.com/images/badges/no-ragrets.svg)](https://forthebadge.com)
-</center>
+</div>
 
 Second project for [42 school](https://42.fr/en/homepage/). We have to recode a simpler `printf()` function which handles the `cspdiuxX%` conversions. 
 
