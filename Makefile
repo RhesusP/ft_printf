@@ -6,7 +6,7 @@
 #    By: cbernot <cbernot@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/26 22:13:51 by cbernot           #+#    #+#              #
-#    Updated: 2022/12/07 08:37:33 by cbernot          ###   ########.fr        #
+#    Updated: 2022/12/07 08:38:10 by cbernot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ OBJS = ${SRCS:.c=.o}
 INCLUDES = ./includes/ft_printf.h
 FLAGS = -Wall -Wextra -Werror
 
-%.o : %.c Makefile ${INCLUDES}
+%.o : %.c ${INCLUDES}
 	gcc ${FLAGS} -I ${INCLUDES} -c $< -o $@
 
 $(NAME): ${OBJS}
