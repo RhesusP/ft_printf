@@ -6,7 +6,7 @@
 #    By: cbernot <cbernot@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/26 22:13:51 by cbernot           #+#    #+#              #
-#    Updated: 2022/11/29 16:12:28 by cbernot          ###   ########.fr        #
+#    Updated: 2022/12/07 08:37:33 by cbernot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,3 +32,5 @@ fclean: clean
 	rm -f ${NAME}
 
 re: fclean all
+
+.PHONY: all clean fclean re
