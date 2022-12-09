@@ -6,12 +6,13 @@
 /*   By: cbernot <cbernot@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 20:24:08 by cbernot           #+#    #+#             */
-/*   Updated: 2022/11/29 16:12:41 by cbernot          ###   ########.fr       */
+/*   Updated: 2022/12/09 12:56:38 by cbernot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../includes/ft_printf.h"
 
+#include <stdio.h>
 /**
  * @brief Call the correct function according to format specifier.
  */
@@ -26,9 +27,7 @@ int	static	ft_handle_format(const char *str, int i, int *prt, va_list *args)
 		len = ft_print_str(va_arg(*args, char *));
 	else if (str[i + 1] == 'p')
 		len = ft_print_ptr((long long)va_arg(*args, unsigned long long));
-	else if (str[i + 1] == 'd')
-		len = ft_print_int(va_arg(*args, int));
-	else if (str[i + 1] == 'i')
+	else if (str[i + 1] == 'd' || str[i + 1] == 'i')
 		len = ft_print_int(va_arg(*args, int));
 	else if (str[i + 1] == 'u')
 		len = ft_print_uint(va_arg(*args, unsigned int));
@@ -38,6 +37,8 @@ int	static	ft_handle_format(const char *str, int i, int *prt, va_list *args)
 		len = ft_print_int_base(va_arg(*args, int), "0123456789ABCDEF");
 	else if (str[i + 1] == '%' && str[i] == '%')
 		len = ft_print_char('%');
+	else
+		len = ft_print_char(str[i + 1]);
 	if (len == -1)
 		return (-1);
 	return (*prt += len);
@@ -55,7 +56,7 @@ int	static	ft_handle_format(const char *str, int i, int *prt, va_list *args)
 int	ft_printf(const char *str, ...)
 {
 	int		printed_lengh;
-	int		i;
+	size_t	i;
 	va_list	args_list;
 
 	va_start(args_list, str);
@@ -68,7 +69,7 @@ int	ft_printf(const char *str, ...)
 			if (ft_handle_format(str, i++, &printed_lengh, &args_list) == -1)
 				return (-1);
 		}
-		else
+		else if (i < ft_strlen(str))
 		{
 			if (ft_print_char((unsigned char)str[i]) == -1)
 				return (-1);
